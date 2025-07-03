@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: react-app
-        image: your-docker-image:latest
+        image: react:latest
         ports:
         - containerPort: 80
