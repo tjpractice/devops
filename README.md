@@ -12,11 +12,11 @@ This project follows a **modular, production-grade DevOps architecture** to depl
 
 2. **Infrastructure Provisioning (Terraform):**
    - GitHub Actions runs Terraform to provision an Amazon EKS (Elastic Kubernetes Service) cluster on AWS.
-   - No Terraform modules are used — pure Terraform code for transparency and customization.
+   - Pure Terraform code for transparency and customization.
 
 3. **Containerization (Docker):**
-   - React application is packaged into a Docker container.
-   - Optional pipeline to build and push Docker images to Docker Hub.
+   - React application is packaged into a Docker images.
+   - The pipeline to build and push Docker images to Docker Hub.
 
 4. **Kubernetes Deployment:**
    - Kubernetes manifests are applied via GitHub Actions to deploy:
@@ -27,7 +27,7 @@ This project follows a **modular, production-grade DevOps architecture** to depl
 5. **Monitoring (Prometheus + Grafana):**
    - Prometheus collects metrics from Kubernetes cluster.
    - Grafana visualizes the collected metrics via dashboards.
-   - Deployed inside a dedicated `monitoring` namespace in the cluster.
+   - Deployed inside a default namespace in the cluster.
 
 ---
 
