@@ -1,0 +1,31 @@
+name: Terraform Infra Provisioning
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'infra/**'
+      - '.github/workflows/terraform-infra.yml'
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform init
+        working-directory: ./infra
+
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+        working-directory: ./infra
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan
+        working-directory: ./infra
+
